@@ -4,6 +4,8 @@ import time
 import subprocess
 def srch(drives,request):
     f=-1
+    print("Searching...")
+    time.sleep(3)
     for root, dirs, files in os.walk(drives,topdown=True):
                 for name in files:
                     path=os.path.join(root, name)
@@ -17,10 +19,11 @@ def srch(drives,request):
                         time.sleep(3)
                         os.startfile(path)
                         print("Opened!")
-                        time.sleep(5)
+                        time.sleep(3)
                         f=1
                         break
-                    
+                if(f==1):
+                    break   
                 for name in dirs:
                     path=os.path.join(root, name)
                     print(path)
@@ -31,7 +34,7 @@ def srch(drives,request):
                         time.sleep(3)
                         os.startfile(path)
                         print("Opened!")
-                        time.sleep(5)
+                        time.sleep(3)
                         f=1
                         break
                 if(f==1):

@@ -1,15 +1,15 @@
+import win32api
 import os
 import sys
+import threading
+import search as s
 def op(request):
-    path=""
-    y="f"
-    x=y+":"
-    for root, dirs, files in os.walk(x,topdown=True):
-        for name in dirs:
-            path=os.path.join(root, name)
-            print(path)
-            s1=path.split("\\")
-            s2=path.split(":")
-            if(request.lower()==s1[len(s1)-1].lower() or request.lower()==s2[len(s2)-1].lower()):
-                os.startfile(path)
-                sys.exit(0)
+    #drives = win32api.GetLogicalDriveStrings()
+    #a=drives.split("\000")
+    #for i in range(0,len(a)-1):
+        #if(a[i]!="C:\\"):
+            s.srch("C:\\test\\",request)
+        
+        
+    
+        
