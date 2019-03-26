@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import time
 import menu
-import sqlFunctions as sfun
+import endMenu
 import openFileOrDir as ofd
 def query(wm):
     r = sr.Recognizer()  
@@ -18,13 +18,12 @@ def query(wm):
         print("Could not Request Results{0}".format(e))
         flg=-1
     if(flg==1):
-        time.sleep(3)
         return request
     elif(flg==0):
         if(wm == "1"):
             menu.options()
         elif(wm == "2"):
-            sfun.endMenu()
+            endMenu.eMenu()
         elif(wm == "3"):
             ofd.open()
         else:

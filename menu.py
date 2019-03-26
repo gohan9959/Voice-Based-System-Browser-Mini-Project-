@@ -1,17 +1,22 @@
 import sqlFunctions as sfun
 import voiceParse as vp
 import dbRequest as dbr
+import urlQuery
 def options():
    op=""
-   print("1.Start\n2.Update Database\n3.Exit\nSelect an Option:")
+   print("1.Open Files or Folders\n2.Open URL\n3.Update Database\n4.Exit\nSelect an Option:")
    op=vp.query("1")
-   if(op == '1' or op.lower() == 'start'):
+   if(op == '1' or "files" in op.lower() or "folders" in op.lower() or "file" in op.lower() or "folder" in op.lower()):
       print("What Should I Open?")
       qry=vp.query("1")
       sfun.getValues(qry)
-   elif(op == '2' or op.lower() == "update database" or op.lower == "update" or op.lower == "database"):
+   elif(op == '2' or "url" in op.lower()):
+      print("What URL Should I Open?")
+      qry=vp.query("1")
+      urlQuery.open(qry)
+   elif(op == '3' or "update" in op.lower() or "database" in op.lower()):
       dbr.request()
-   elif(op == '3' or op.lower() == 'exit'):
+   elif(op == '4' or "exit" in op.lower()):
       print("Bye!!")
    else:
       print("Invalid Choice")

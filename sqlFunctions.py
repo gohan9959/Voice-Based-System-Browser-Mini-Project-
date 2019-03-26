@@ -1,6 +1,6 @@
 import sqlite3 as sql
 import os
-import menu
+import endMenu
 import voiceParse as vp
 import openFileOrDir as ofd
 def putValues(names = [],paths = []):
@@ -19,7 +19,7 @@ def putValues(names = [],paths = []):
     print("Closing Connection to Database!")
     conn.close()
     print("Closed Connection to Database!")
-    endMenu()
+    endMenu.eMenu()
 
 def getValues(request):
     print("Connecting to Database!")
@@ -45,15 +45,4 @@ def getValues(request):
     print("Closing Connection to Database!")
     conn.close()
     print("Closed Connection to Database!")
-    endMenu()
-
-def endMenu():            
-    print("1.Menu\n2.Exit\nYour Choice:")
-    qry=vp.query("2")
-    if(qry == '1' or qry.lower() == "menu"):
-        menu.options()
-    elif(qry == '2' or qry.lower() == "exit"):
-        print("Bye!!")
-    else:
-        print("Wrong Choice!!")
-        endMenu()
+    endMenu.eMenu()
