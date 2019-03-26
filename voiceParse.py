@@ -1,7 +1,9 @@
 import speech_recognition as sr
 import time
 import menu
-def query():
+import sqlFunctions as sfun
+import openFileOrDir as ofd
+def query(wm):
     r = sr.Recognizer()  
     with sr.Microphone() as source:
         audio = r.listen(source)  
@@ -19,6 +21,13 @@ def query():
         time.sleep(3)
         return request
     elif(flg==0):
-        menu.options()
+        if(wm == "1"):
+            menu.options()
+        elif(wm == "2"):
+            sfun.endMenu()
+        elif(wm == "3"):
+            ofd.open()
+        else:
+            print("Unknown Path!!")
     elif(flg==-1):
         print("Exited!!")
