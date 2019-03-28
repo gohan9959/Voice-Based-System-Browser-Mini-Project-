@@ -36,12 +36,6 @@ def getValues(request):
         values=cur.execute('''SELECT * FROM SYSDIR WHERE NAME LIKE ?''',rqst)
         val=values.fetchall()
         flag=ofd.open(val,1)
-    if(flag == 1):
-        print("Found Requested Query!")
-    elif(flag == 2):
-        print("Found Similar Query!")
-    else:
-        print("Requested Query Not Found!")
     print("Closing Connection to Database!")
     conn.close()
     print("Closed Connection to Database!")

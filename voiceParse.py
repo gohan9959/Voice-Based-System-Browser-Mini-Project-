@@ -9,7 +9,7 @@ def query(wm):
         audio = r.listen(source)  
     try:  
         request=r.recognize_google(audio)
-        print(request)
+        print(request.capitalize())
         flg=1
     except sr.UnknownValueError:  
         print("Could not understand audio")
