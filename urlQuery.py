@@ -1,21 +1,23 @@
 import webbrowser as wb
 import endMenu
 import os
+import sqlite3 as sql
 def open(request):
-    cpath='C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
-    fpath='C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-    firefox_path= 'C:/Program Files/Mozilla Firefox/firefox.exe %s'
-    print("Opening URL!") 
-    if(os.path.exists(cpath)):
-        wb.get(chrome_path).open_new_tab(request)
-    elif(os.path.exists(fpath)):
-        wb.get(firefox_path).open_new_tab(request)
-    else:
+    conn=sql.connect('Path.db')
+    cur=conn.cursor()
+    pth=cur.execute('''SELECT * FROM DEFBROWSER WHERE DEF = 1''')
+    path1=pth.fetchone()
+    path=path1[1].replace('\\','/')+' %s'
+    print("Opening URL!")
+    try: 
+        wb.get(path).open_new_tab(request)
+    except:
         try:
             wb.open_new_tab(request)
         except:
             print("Unable To Open URL!")
         else:
             print("URL Opened!")
+    else:
+        print("URL Opened!")
     endMenu.eMenu()

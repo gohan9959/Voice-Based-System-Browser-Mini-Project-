@@ -31,7 +31,7 @@ def multipleOptions(request = [[]],op = int):
     try:
        req=int(req)
     except:
-        print("Give Option Numbes Only")
+        print("Give Option In Numbers Only")
         req=-1
     if (req>0 and req<=len(request)+1):
         try:

@@ -1,7 +1,7 @@
 import menu
 import voiceParse as vp
 def eMenu():
-    qry = str            
+    qry = str()            
     print("1.Menu\n2.Exit\nYour Choice:")
     qry=vp.query("2")
     if(qry == '1' or "menu" in qry.lower()):
